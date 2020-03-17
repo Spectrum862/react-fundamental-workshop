@@ -1,6 +1,6 @@
 // Basic Forms
 
-import React from 'react'
+import React,{useRef} from 'react'
 
 function UsernameForm({onSubmitUsername}) {
   // 🐨 add a submit event handler here (`handleSubmit`).
@@ -16,11 +16,19 @@ function UsernameForm({onSubmitUsername}) {
 
   // 🐨 make sure to associate the label to the input by specifying an `id` on
   // the input and a matching value as an `htmlFor` prop on the label.
+  const textInput = useRef();
+  const onSubmit = e =>{
+    e.preventDefault()
+    onSubmitUsername(textInput.current.value)
+    // onSubmitUsername(e.target.elements.username.value)
+  } 
+  
+  
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div>
         <label>Username:</label>
-        <input type="text" />
+        <input id="username"type="text" ref={textInput} />
       </div>
       <button type="submit">Submit</button>
     </form>
