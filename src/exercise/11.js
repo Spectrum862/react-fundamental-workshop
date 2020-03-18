@@ -7,9 +7,9 @@ import React from 'react'
 // 🐨 Make a custom hook called useCounter that accepts the step and
 // initialCount and returns the count and increment functions
 
-function useCounter(initialCount = 0){
+function useCounter({initialCount = 0}){
   const [count, setCount] = React.useState(initialCount)
-  const handleChange = event => setCount(event.target.value++)
+  const handleChange = event => setCount(count+1)
   // you can return anything you want to here. We're returning an array
   // which is similar to the useState API.
   return [count, handleChange]
